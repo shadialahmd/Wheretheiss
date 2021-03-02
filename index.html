@@ -22,7 +22,7 @@
 
 
     <script>
-        var mymap = L.map('mapid').setView([0, 0], 1);
+        const mymap = L.map('mapid').setView([0, 0], 1);
 
         var attribution='&copy <a href="https://api/openstreetmap.org/copyright">openstreetmap</a> contributors';
         var tileUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
@@ -31,6 +31,7 @@
         tiles.addTo(mymap);
 
 getdata();
+setInterval(getdata,5000);
          function getdata(){
             
 
@@ -45,6 +46,8 @@ getdata();
             console.log(y);
 
             L.marker([latitude,longitude]).addTo(mymap);
+           // marker.setLatLang([latitude,longitude]);
+           // mymap.setView({latitude,longitude},2);
             document.getElementById("lat").innerHTML=latitude;
             document.getElementById("long").innerHTML=longitude;
         });
