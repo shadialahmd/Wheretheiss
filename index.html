@@ -6,6 +6,11 @@
 
 
     <script>
+
+        let api_url="https://api.wheretheiss.at/v1/satellites";
+
+        fetch(api_url).then(result =>result.json())
+        .then(y => console.log(y));
     </script>
 </body>
 </html>
