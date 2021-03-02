@@ -1,13 +1,34 @@
 <html>
 <head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+
+   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+
+<style>
+    #mapid { height: 280px; }
+</style>
 </head>
+
 <body>
+
+    <div id="mapid"></div>
 
     lat = <h1 id="lat"> </h1>
    long =  <h1 id="long"></h1>
 
 
     <script>
+        var mymap = L.map('mapid').setView([0, 0], 1);
+
+        var attribution='&copy <a href="https://api/openstreetmap.org/copyright">openstreetmap</a> contributors';
+        var tileUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+        var tiles=L.tileLayer(tileUrl,{attribution});
+
+        tiles.addTo(mymap);
 
 getdata();
          function getdata(){
@@ -23,6 +44,7 @@ getdata();
             const {latitude,longitude}=y;
             console.log(y);
 
+            L.marker([latitude,longitude]).addTo(mymap);
             document.getElementById("lat").innerHTML=latitude;
             document.getElementById("long").innerHTML=longitude;
         });
