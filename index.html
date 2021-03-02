@@ -3,14 +3,32 @@
 </head>
 <body>
 
+    lat = <h1 id="lat"> </h1>
+   long =  <h1 id="long"></h1>
 
 
     <script>
 
-        let api_url="https://api.wheretheiss.at/v1/satellites";
+getdata();
+         function getdata(){
+            
+
+        
+
+        let api_url="https://api.wheretheiss.at/v1/satellites/25544";
 
         fetch(api_url).then(result =>result.json())
-        .then(y => console.log(y));
+        .then(y => {
+
+            const {latitude,longitude}=y;
+            console.log(y);
+
+            document.getElementById("lat").innerHTML=latitude;
+            document.getElementById("long").innerHTML=longitude;
+        });
+        
+         }
     </script>
+
 </body>
 </html>
